@@ -1,4 +1,4 @@
-$studentprefix ="Your 3 letter abbreviation here"
+$studentprefix ="eky"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 
 $id = $(az group show `
