@@ -273,4 +273,28 @@ jobs:
           COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
-        run: cosign sign ${{ env.REGISTRY }}/${{ env.WEB_IMAGE_NAME }}@${{ steps.build-and-push-web.outputs.digest }}                        
+        run: cosign sign ${{ env.REGISTRY }}/${{ env.WEB_IMAGE_NAME }}@${{ steps.build-and-push-web.outputs.digest }}
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2                
+
+    - name: Login on Azure CLI
+      uses: azure/login@v1.1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy WebApp
+      shell: pwsh
+      env:
+        CR_PAT: ${{ secrets.CR_PAT }}
+      run: |
+        cd ./infrastructure
+        ./deploy-webapp.ps1 -studentprefix hbs  # <-- This needs to
+                                                # match the student
+                                                # prefix we use in
+                                                # previous steps.          
