@@ -14,3 +14,7 @@
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
+
+PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure> .\deploy-appinsights.ps1
+The installed extension 'application-insights' is in preview.
+AI Instrumentation Key="88915c08-37de-4edd-b97b-34fbfb3cfd65"
