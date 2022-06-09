@@ -9,6 +9,8 @@ on:
   schedule:
     - cron: '40 18 * * *'
   push:
+    branches-ignore:    # <-- Add this list property
+      - '**'
     branches: [ main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
