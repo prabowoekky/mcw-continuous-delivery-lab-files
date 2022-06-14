@@ -55,7 +55,7 @@ stages:
               scriptLocation: 'scriptPath'
               scriptPath: './infrastructure/deploy-webapp.ps1'
               workingDirectory: ./infrastructure
-              arguments: 'eky'         # <-- This should be your custom
+              arguments: 'eki'         # <-- This should be your custom
             env:                       # lowercase three character 
               CR_PAT: $(CR_PAT)  # prefix from an earlier exercise.
                             # ^^^^^^
